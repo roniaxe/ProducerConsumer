@@ -4,16 +4,17 @@ namespace Domain
 {
     public class Consumer
     {
-        private readonly int _id;
+        public int Quantity { get; set; }
+        public int Id { get; set; }
 
         public Consumer(int id)
         {
-            _id = id;
+            Id = id;
         }
 
         public void NotifyCounterUpdate(int quantity)
         {
-            Console.WriteLine($"Consumer Id {_id}: Producer updated quantity with {quantity}");
+            Quantity += quantity;
         }
     }
 }

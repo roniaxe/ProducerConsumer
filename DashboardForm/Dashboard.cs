@@ -1,16 +1,14 @@
 ﻿using Domain;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace DashboardForm
 {
     public partial class Dashboard : Form
     {
-        private Producer producer;
-        private List<Consumer> consumers = new List<Consumer>();
-        private BindingList<int> bindingList = new BindingList<int>();
+        private Producer _producer;
+        private readonly List<Consumer> _consumers = new List<Consumer>();
         public Dashboard()
         {
             InitializeComponent();
@@ -18,25 +16,31 @@ namespace DashboardForm
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            producer = new Producer(1);
+            _producer = new Producer(1);
 
             Consumer consumer1 = new Consumer(1);
             Consumer consumer2 = new Consumer(2);
             Consumer consumer3 = new Consumer(3);
 
-            producer.OnCounterUpdate += consumer1.NotifyCounterUpdate;
-            producer.OnCounterUpdate += consumer2.NotifyCounterUpdate;
-            producer.OnCounterUpdate += consumer3.NotifyCounterUpdate;
+            _producer.OnCounterUpdate += consumer1.NotifyCounterUpdate;
+            _producer.OnCounterUpdate += consumer2.NotifyCounterUpdate;
+            _producer.OnCounterUpdate += consumer3.NotifyCounterUpdate;
 
-            consumers.Add(consumer1);
-            consumers.Add(consumer2);
-            consumers.Add(consumer3);
+            _consumers.Add(consumer1);
+            _consumers.Add(consumer2);
+            _consumers.Add(consumer3);
         }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            producer.UpdateCounter(int.Parse(addQnTextBox.Text));
-            quantityTextBox.Text = producer.Quantity.ToString();
+            _producer.UpdateCounter(int.Parse(addQnTextBox.Text));
+            quantityTextBox.Text = _producer.Quantity.ToString();
+
+            var rnd = new Random();
+            foreach (var consumer in _consumers)
+            {
+                MessageBox.Show($@"Consumer {consumer.Id} has {(consumer.Quantity * rnd.Next(10)).ToString()}");
+            }
         }
     }
 }
