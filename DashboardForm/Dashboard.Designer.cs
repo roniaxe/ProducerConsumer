@@ -30,17 +30,8 @@
         {
             this.addBtn = new System.Windows.Forms.Button();
             this.addQnTextBox = new System.Windows.Forms.TextBox();
-            quantityTextBox = new System.Windows.Forms.TextBox();
+            this.quantityTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // quantityTextBox
-            // 
-            quantityTextBox.Location = new System.Drawing.Point(104, 81);
-            quantityTextBox.Multiline = true;
-            quantityTextBox.Name = "quantityTextBox";
-            quantityTextBox.ReadOnly = true;
-            quantityTextBox.Size = new System.Drawing.Size(203, 114);
-            quantityTextBox.TabIndex = 0;
             // 
             // addBtn
             // 
@@ -59,14 +50,22 @@
             this.addQnTextBox.Size = new System.Drawing.Size(100, 20);
             this.addQnTextBox.TabIndex = 2;
             // 
+            // quantityTextBox
+            // 
+            this.quantityTextBox.Location = new System.Drawing.Point(132, 131);
+            this.quantityTextBox.Name = "quantityTextBox";
+            this.quantityTextBox.ReadOnly = true;
+            this.quantityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.quantityTextBox.TabIndex = 3;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 506);
+            this.Controls.Add(this.quantityTextBox);
             this.Controls.Add(this.addQnTextBox);
             this.Controls.Add(this.addBtn);
-            this.Controls.Add(quantityTextBox);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
