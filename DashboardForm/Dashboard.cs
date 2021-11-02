@@ -22,13 +22,14 @@ namespace DashboardForm
             Consumer consumer2 = new Consumer(2);
             Consumer consumer3 = new Consumer(3);
 
-            _producer.OnCounterUpdate += consumer1.NotifyCounterUpdate;
-            _producer.OnCounterUpdate += consumer2.NotifyCounterUpdate;
-            _producer.OnCounterUpdate += consumer3.NotifyCounterUpdate;
-
             _consumers.Add(consumer1);
             _consumers.Add(consumer2);
             _consumers.Add(consumer3);
+
+            _producer.Subscribe(consumer1.NotifyCounterUpdate);
+            _producer.Subscribe(consumer2.NotifyCounterUpdate);
+            _producer.Subscribe(consumer3.NotifyCounterUpdate);
+
         }
 
         private void addBtn_Click(object sender, EventArgs e)
