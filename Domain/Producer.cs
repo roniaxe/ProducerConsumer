@@ -22,5 +22,10 @@ namespace Domain
 
             OnCounterUpdate?.Invoke(quantity);
         }
+
+        public void Subscribe(Action<int> subscriberMethod)
+        {
+            OnCounterUpdate += subscriberMethod;
+        }
     }
 }
