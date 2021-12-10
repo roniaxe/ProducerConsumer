@@ -18,9 +18,9 @@ namespace DashboardForm
         {
             _producer = new Producer(1);
 
-            Consumer consumer1 = new Consumer(1);
-            Consumer consumer2 = new Consumer(2);
-            Consumer consumer3 = new Consumer(3);
+            var consumer1 = new Consumer(1);
+            var consumer2 = new Consumer(2);
+            var consumer3 = new Consumer(3);
 
             _consumers.Add(consumer1);
             _consumers.Add(consumer2);
@@ -40,7 +40,7 @@ namespace DashboardForm
             var rnd = new Random();
             foreach (var consumer in _consumers)
             {
-                MessageBox.Show($@"Consumer {consumer.Id} has {(consumer.Quantity * rnd.Next(10)).ToString()}");
+                MessageBox.Show($@"Consumer {consumer.Id} has {consumer.Quantity * rnd.Next(10)}");
             }
         }
     }
